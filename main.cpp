@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -53,23 +54,21 @@ int main()
 
     std::cout << "\n Rezolvare: \n";
 
+    auto docEnd = doctors.end();
+
     for (auto& problem : problems) {
         std::string speciality = problem.speciality;
-        std::string name = problem.name;
-        int status = 0;
-        
-        for (auto& doctor : doctors) {
-            if (speciality == doctor.speciality) {
-                status = 1;
-                break;
-            } 
-        }
+        std::string name = problem.name;    
 
-        if (status == 1) {
-            std::cout << name << " Accepted" << std::endl;
-        }
-        else {
-            std::cout << name << " Rejected" << std::endl;
+        auto docIt = find_if(doctors.begin(), docEnd, [speciality](struct Doctor doc) {
+            return doc.speciality == speciality;
+        });
+
+        if (docIt != docEnd) {
+            std::cout << docIt->name << ": " << name << std::endl;
+            docEnd = remove_if(doctors.begin(), docEnd, [docIt](struct Doctor doc) {
+                return doc.name == docIt->name;
+            });
         }
     }
 
