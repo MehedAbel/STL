@@ -34,7 +34,7 @@ int main()
     std::priority_queue<Problem> problems;
     std::vector<Doctor> doctors;
 
-    ifstream inFile("input.txt");
+    ifstream inFile("input4_bonus.txt");
 
     int no_problems, no_doctors;    
     string name, speciality;
