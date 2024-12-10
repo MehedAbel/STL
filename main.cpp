@@ -52,7 +52,7 @@ int main()
         struct Problem problem = { name, speciality, duration, priority };
         problems.push(problem);
 
-        cout << name << ' ' << speciality << '\n';
+        //cout << name << ' ' << speciality << '\n';
     }
 
     inFile >> no_doctors;
@@ -65,10 +65,10 @@ int main()
         struct Doctor doctor = { name, speciality };
         doctors.push_back(doctor);
 
-        cout << name << ' ' << speciality << '\n';
+        //cout << name << ' ' << speciality << '\n';
     }
 
-    std::cout << "\n Rezolvare: \n";
+    //std::cout << "\n Rezolvare: \n";
 
     while (!problems.empty()) {
         Problem problem = problems.top();
